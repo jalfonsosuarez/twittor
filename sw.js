@@ -1,8 +1,8 @@
 // Imports
 importScripts('js/sw-utils.js');
 
-const STATIC_CACHE = 'static-v3';
-const STATIC_DYNAMIC = 'dynamic-v1';
+const STATIC_CACHE = 'static-v4';
+const STATIC_DYNAMIC = 'dynamic-v2';
 const STATIC_INMUTABLE = 'inmutable-v1';
 
 const APP_SHELL = [
@@ -15,7 +15,8 @@ const APP_SHELL = [
     'img/avatars/spiderman.jpg',
     'img/avatars/thor.jpg',
     'img/avatars/wolverine.jpg',
-    'js/app.js'
+    'js/app.js',
+    'js/sw-utils.js'
 ];
 
 const APP_SHELL_INMUTABLE = [
@@ -51,6 +52,10 @@ self.addEventListener('activate', e => {
         keys.forEach(key => {
 
             if (key !== STATIC_CACHE && key.includes('static')) {
+                return caches.delete(key);
+            }
+
+            if (key !== STATIC_DYNAMIC && key.includes('dynamic')) {
                 return caches.delete(key);
             }
         });
