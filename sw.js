@@ -5,6 +5,8 @@ const STATIC_CACHE = 'static-v4';
 const STATIC_DYNAMIC = 'dynamic-v2';
 const STATIC_INMUTABLE = 'inmutable-v1';
 
+
+
 const APP_SHELL = [
     // '/',
     'index.html',
